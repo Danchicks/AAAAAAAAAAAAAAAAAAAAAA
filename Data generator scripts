@@ -1,0 +1,46 @@
+#1 Python
+def main(config):
+    directions = [
+        "AM", "CS", "PH", "CH", "BI", "HI", "EN", "EC", "PS", "ED", "BU",
+        "FI", "AC", "MG", "AR", "DS", "ME", "NU", "PH", "FO", "AG", "VE"
+    ]
+
+    groups = []
+    group_count = 5000  
+    course_limit = 6   
+    max_groups_per_course = 1000 // course_limit  
+
+    for course in range(1, course_limit + 1):
+        for direction in directions:
+            for group_number in range(1, max_groups_per_course + 1):
+                if len(groups) < group_count:
+                    group_name = f"{direction}-{course}{group_number:02}"
+                    groups.append(group_name)
+                else:
+                    break
+
+    return groups
+
+
+
+#2
+def main(config):
+    subjects_base = [
+        "Mathematics", "Physics", "Chemistry", "Biology", "History",
+        "Philosophy", "Literature", "Sociology", "Psychology", "Economics",
+        "Law", "Computer Science", "Engineering", "Art", "Music",
+        "Theater", "Astronomy", "Geology", "Statistics", "Linguistics",
+        "Anthropology", "Political Science", "Education", "Business",
+        "Marketing", "Finance", "Accounting", "Management", "Architecture",
+        "Design", "Environmental Science", "Medicine", "Nursing",
+        "Pharmacology", "Veterinary Science", "Agriculture", "Forestry",
+        "Sports Science", "Journalism", "Communications"
+    ]
+    modifiers = ["Introduction to", "Advanced", "Fundamentals of", "Applied", "Theory of", "Modern", "Classical", "Basics of"]
+    unique_subjects = set()
+    while len(unique_subjects) < 40:
+        subject = modifiers[len(unique_subjects) % len(modifiers)] + " " + subjects_base[len(unique_subjects) % len(subjects_base)]
+        unique_subjects.add(subject)
+
+    return list(unique_subjects)
+
